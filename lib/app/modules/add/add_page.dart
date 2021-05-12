@@ -33,26 +33,26 @@ class _AddPageState extends State<AddPage> {
               SizedBox(
                 height: 5,
               ),
-              RaisedButton(
-                color: Theme.of(context).primaryColor,
+              ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.purple),
+                ),
                 onPressed: () async {
                   var result = await addController.salvar();
                   if (result) {
                     Navigator.of(context).pop();
                   } else {
-                    showDialog(
-                      context: context,
-                      child: AlertDialog(
-                        content: Text("Erro ao tentar salvar o produto!!"),
-                        actions: [
-                          FlatButton(
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                            child: Text('Fechar'),
-                          ),
-                        ],
-                      ),
+                    AlertDialog(
+                      content: Text("Erro ao tentar salvar o produto!!"),
+                      actions: [
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: Text('Fechar'),
+                        ),
+                      ],
                     );
                   }
                 },
