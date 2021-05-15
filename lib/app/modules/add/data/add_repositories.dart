@@ -8,6 +8,7 @@ class AddRepositories extends Disposable {
 
   AddRepositories(this._hasuraConnect);
 
+  //Add a task to the list
   Future<bool> addTarefas(String descricao, bool check) async {
     var mutation = """ 
         mutation addTarefas(\$descricao: String, \$check:Boolean){

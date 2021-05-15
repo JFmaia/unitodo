@@ -10,6 +10,7 @@ class RepositoriesRepository extends Disposable {
 
   RepositoriesRepository(this._hasuraConnect);
 
+  //Lists all tasks in the system
   Future<List<Tarefa>> getTarefas() async {
     var guery = """
         query getTarefas {
@@ -26,6 +27,7 @@ class RepositoriesRepository extends Disposable {
     return Tarefa.fromJsonList(snapshot['data']['tarefa'] as List);
   }
 
+  //Update in the list
   Future<bool> updateTarefas(String id, bool check) async {
     var mutation = """ 
         mutation updateCheck(\$id: uuid,\$check : Boolean) {
@@ -44,6 +46,7 @@ class RepositoriesRepository extends Disposable {
     return snapshot["data"]["update_tarefa"]["affected_rows"] > 0;
   }
 
+  //Remove from list
   Future<bool> deleteTarefa(String id) async {
     var mutation = """ 
         mutation deleteTarefa (\$id: uuid){
